@@ -1,11 +1,11 @@
-import './style.css';
+import './styles.css';
 import Nav from '../Nav';
 
 const Header = () => {
   return (
-    <>
+    <header className="header">
       <Nav />
-    </>
+    </header>
   );
 };
 

@@ -1,18 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import Dogs from '../../assets/dogs.svg?react';
+import './styles.css';
 
 const Nav = () => {
   return (
-    <nav className="container">
-      <ul>
-        <li>
-          <NavLink to="/" end>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">Login</NavLink>
-        </li>
-      </ul>
+    <nav className="nav container">
+      <NavLink to="/" end className="logo" aria-label="Dogs - Home">
+        <Dogs />
+      </NavLink>
+
+      <NavLink to="/login" className="login">
+        Login / Criar
+      </NavLink>
     </nav>
   );
 };
