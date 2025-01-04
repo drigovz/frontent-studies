@@ -4,9 +4,26 @@
   "version": "0.0.1",
   "type": "module",
   "engineStrict": true,
+  "author": {
+    "name": "Rodrigo Vaz",
+    "email": "rodrigodp2014@gmail.com",
+    "url": "https://github.com/drigovz"
+  },
   "engines": {
     "node": "^20.11.0",
     "npm": "^10.8.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{ts, js, jsx, tsx}": [
+      "npm run lint-fix",
+      "npm run lint",
+      "git add ."
+    ]
   },
   "scripts": {
     "dev": "vite",
@@ -31,6 +48,8 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "vite": "^6.0.5"
   }
