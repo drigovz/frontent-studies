@@ -10,7 +10,7 @@ const Nav = () => {
       </NavLink>
 
       <NavLink to="/login" className="login">
-        Login / Criar
+        Login / Create
       </NavLink>
     </nav>
   );
