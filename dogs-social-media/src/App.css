@@ -1,13 +1,17 @@
 * {
   box-sizing: border-box;
+  --type-firts: 'Helvetica', Arial, sans-serif;
+  --type-second: 'Spectral', sans-serif;
+  --color-yellow-first: #fb1;
+  --color-yellow-second: #764701;
+  --color-gray-first: #eee;
+  --color-red-first: #f31;
 }
 
 body {
   padding-top: 4rem;
   margin: 0;
   color: #333;
-  --type-firts: 'Helvetica', Arial, sans-serif;
-  --type-second: 'Spectral', sans-serif;
   font-family: var(--type-firts);
 }
 
