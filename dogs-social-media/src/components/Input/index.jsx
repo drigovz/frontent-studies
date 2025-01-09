@@ -14,8 +14,8 @@ const Input = props => {
         disabled={props.disabled}
         value={props.value}
         onChange={props.onChange}
+        onBlur={props.onBlur}
         className={props.className}
-        {...props}
       />
 
       {props.error && <p className="error">{props.error}</p>}
@@ -33,6 +33,7 @@ Input.propTypes = {
   value: PropTypes.any,
   className: PropTypes.string,
   onChange: PropTypes.func || undefined,
+  onBlur: PropTypes.func || undefined,
   error: PropTypes.string,
 };
 
