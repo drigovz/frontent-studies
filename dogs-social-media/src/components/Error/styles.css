@@ -1,0 +1,7 @@
+.error {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: var(--color-red-first);
+  font-weight: bold;
+  text-align: left;
+}

@@ -13,6 +13,10 @@ export const UserContextStorage = ({ children }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  function getToken() {
+    return window.localStorage.getItem(TOKEN_STORAGE_KEY);
+  }
+
   function saveToken(token) {
     window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
   }
@@ -45,7 +49,7 @@ export const UserContextStorage = ({ children }) => {
         setUserIsLogged(false);
 
         // tenta pegar o token se ele já existir
-        const token = window.localStorage.getItem(TOKEN_STORAGE_KEY);
+        const token = getToken();
         if (token) {
           const { url, options } = TOKEN_VALIDATE_POST(token);
           const response = await fetch(url, options);

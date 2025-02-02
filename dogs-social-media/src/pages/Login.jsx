@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
+import './Login.css';
 
 function Login() {
   const { userIsLogged } = useContext(UserContext);
@@ -13,7 +14,11 @@ function Login() {
 
   return (
     <>
-      <Outlet />
+      <section className="login-container">
+        <div className="forms-container">
+          <Outlet />
+        </div>
+      </section>
     </>
   );
 }
