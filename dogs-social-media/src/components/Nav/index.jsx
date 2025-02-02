@@ -5,7 +5,7 @@ import Dogs from '../../assets/dogs.svg?react';
 import './styles.css';
 
 const Nav = () => {
-  const { user } = useContext(UserContext);
+  const { user, userLogout } = useContext(UserContext);
 
   return (
     <nav className="nav container">
@@ -14,9 +14,12 @@ const Nav = () => {
       </NavLink>
 
       {user ? (
-        <NavLink to="/account" className="login">
-          {user.nome}
-        </NavLink>
+        <>
+          <NavLink to="/account" className="login">
+            {user.nome}
+          </NavLink>
+          <button onClick={userLogout}>Logout</button>
+        </>
       ) : (
         <NavLink to="/login" className="login">
           Login / Create
