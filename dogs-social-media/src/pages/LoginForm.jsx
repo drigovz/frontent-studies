@@ -4,6 +4,8 @@ import useForm from '../hooks/useForm';
 // import { validationType } from '../utilities/enums';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import Error from '../components/Error';
+import './LoginForm.css';
 
 const LoginForm = () => {
   // passando o tipo de validação para o hook useForm
@@ -27,10 +29,9 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-
-      <form action="" onSubmit={handleSubmit}>
+    <section className="animeLeft">
+      <h2 className="title">Login</h2>
+      <form className="form" onSubmit={handleSubmit}>
         <Input
           type="text"
           label="Username"
@@ -48,11 +49,22 @@ const LoginForm = () => {
         ) : (
           <Input type="submit" id="submit" name="submit" className="button" value="Enter" />
         )}
-
-        {error && <p>{error}</p>}
       </form>
-      <Link to="/login/create">Create</Link>
-    </div>
+      <Error error={error} />
+
+      <Link to="/login/forgot-password" className="forgot-password">
+        Forgot password?
+      </Link>
+
+      <div className="create-account">
+        <h2 className="subtitle">Create Account</h2>
+        <p>Don't have an account yet? Create your account now!</p>
+
+        <Link className="button" to="/login/create">
+          Create
+        </Link>
+      </div>
+    </section>
   );
 };
 

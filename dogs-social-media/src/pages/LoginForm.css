@@ -1,0 +1,45 @@
+.form {
+  margin-bottom: 2rem;
+}
+
+.forgot-password {
+  display: inline-block;
+  color: #666;
+  padding: 0.5rem 0;
+  line-height: 1;
+}
+
+.forgot-password::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  display: block;
+  position: relative;
+  top: 0.3rem;
+}
+
+.create-account {
+  margin-top: 4rem;
+}
+
+.create-account p {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-family: var(--type-second);
+  line-height: 1;
+  font-size: 2rem;
+}
+
+.subtitle::after {
+  content: '';
+  display: block;
+  background: #ddd;
+  height: 0.5rem;
+  width: 3rem;
+  border-radius: 0.2rem;
+  position: relative;
+}
