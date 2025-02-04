@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { validationType } from '../utilities/enums';
 import useForm from '../hooks/useForm';
+import useFetch from '../hooks/useFetch';
 import Input from '../components/Input';
 import Error from '../components/Error';
 import { USER_POST } from '../api/userEndpoints';
@@ -10,30 +11,22 @@ const LoginCreate = () => {
   const username = useForm();
   const email = useForm(validationType.email);
   const password = useForm(validationType.password);
-  const { error, setError, userLogin, loading, setLoading } = useContext(UserContext);
+  const { error, userLogin } = useContext(UserContext);
+  const { loading, request, fetchError } = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setError(null);
-    setLoading(true);
 
-    try {
-      const { url, options } = USER_POST({
-        username: username.value,
-        email: email.value,
-        password: password.value,
-      });
+    const { url, options } = USER_POST({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    });
 
-      const response = await fetch(url, options);
-      if (response.ok) {
-        userLogin(username.value, password.value);
-      } else {
-        setError('Error when try to register user');
-      }
-    } catch {
-      setError(`Error: ${error}`);
-    } finally {
-      setLoading(false);
+    const { response } = await request(url, options);
+
+    if (response.ok) {
+      userLogin(username.value, password.value);
     }
   }
 
@@ -51,7 +44,8 @@ const LoginCreate = () => {
         ) : (
           <Input type="submit" id="submit" name="submit" className="button" value="Register your account" />
         )}
-        <Error error={error} />
+
+        <Error error={error ?? fetchError} />
       </form>
     </section>
   );
