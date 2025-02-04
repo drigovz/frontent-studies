@@ -58,7 +58,7 @@ const LoginForm = () => {
 
       <div className="create-account">
         <h2 className="subtitle">Create Account</h2>
-        <p>Don't have an account yet? Create your account now!</p>
+        <p>Dont have an account yet? Create your account now!</p>
 
         <Link className="button" to="/login/create">
           Create
