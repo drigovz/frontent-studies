@@ -15,7 +15,7 @@ export const ApplicationRoutes = () => {
       <Route path="/account" element={<Account />} />
       <Route path="/" element={<Login />}>
         <Route path="login" element={<LoginForm />} />
-        <Route path="create" element={<LoginCreate />} />
+        <Route path="login/create" element={<LoginCreate />} />
         <Route path="lost" element={<LoginLost />} />
         <Route path="reset" element={<LoginResetPassword />} />
       </Route>

@@ -9,14 +9,16 @@ const Input = props => {
       <input
         id={props.id}
         name={props.name}
-        type={props.type}
+        type={props.type ?? 'text'}
         placeholder={props.placeholder}
         disabled={props.disabled}
         value={props.value}
         onChange={props.onChange}
         onBlur={props.onBlur}
-        className={props.className}
+        className={props.className ?? 'input'}
       />
+
+      {props.error && <p className="error">{props.error}</p>}
     </div>
   );
 };
@@ -32,6 +34,7 @@ Input.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func || undefined,
   onBlur: PropTypes.func || undefined,
+  error: PropTypes.string,
 };
 
 export default Input;
