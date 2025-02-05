@@ -7,18 +7,26 @@ import LoginResetPassword from '../pages/LoginResetPassword';
 import LoginLost from '../pages/LoginLost';
 import LoginForm from '../pages/LoginForm';
 import Account from '../pages/Account';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 export const ApplicationRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/account" element={<Account />} />
       <Route path="/" element={<Login />}>
         <Route path="login" element={<LoginForm />} />
         <Route path="login/create" element={<LoginCreate />} />
-        <Route path="lost" element={<LoginLost />} />
-        <Route path="reset" element={<LoginResetPassword />} />
+        <Route path="login/forgot-password" element={<LoginLost />} />
+        <Route path="login/reset" element={<LoginResetPassword />} />
       </Route>
+      <Route
+        path="account"
+        element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        }
+      ></Route>
 
       <Route path="*" element={<NotFound />} />
     </Routes>
