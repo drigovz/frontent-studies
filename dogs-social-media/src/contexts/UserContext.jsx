@@ -26,18 +26,13 @@ export const UserContextStorage = ({ children }) => {
   }
 
   // função de logout, remove o token e limpa todos os estados do usuário
-  const userLogout = useCallback(
-    async function () {
-      setUser(null);
-      setError(null);
-      setLoading(false);
-      setUserIsLogged(false);
-      removeToken();
-      // e na sequencia, redireciona o usuário para a página de login
-      navigate('/login');
-    },
-    [navigate],
-  );
+  const userLogout = useCallback(async function () {
+    setUser(null);
+    setError(null);
+    setLoading(false);
+    setUserIsLogged(false);
+    removeToken();
+  }, []);
 
   //função para logar o usuário automaticamente se o token for válido
   useEffect(() => {
