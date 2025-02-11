@@ -1,0 +1,39 @@
+.user-header-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.user-header-nav a,
+.user-header-nav button {
+  background-color: #eee;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.user-header-nav a:hover,
+.user-header-nav a:focus,
+.user-header-nav button:hover,
+.user-header-nav button:focus {
+  background-color: #fff;
+  box-shadow: 0 0 0 3px #eee;
+  border-color: #333;
+  outline: none;
+}
+
+.user-header-nav a.active {
+  background-color: #fff;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+}
+
+.user-header-nav a.active svg > * {
+  fill: #fb1;
+}
