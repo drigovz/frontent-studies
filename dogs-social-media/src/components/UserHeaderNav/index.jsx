@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import Feed from '../../assets/feed.svg?react';
@@ -6,15 +6,14 @@ import Statistics from '../../assets/statistics.svg?react';
 import Add from '../../assets/add.svg?react';
 import Logout from '../../assets/logout.svg?react';
 import './styles.css';
+import useMedia from '../../hooks/useMedia';
 
 const UserHeaderNav = () => {
-  const { isMobile, setIsMobile } = useState(null);
   const { userLogout } = useContext(UserContext);
-  const navigate = useNavigate();
+  // utilizamos o hook useMedia para verificar se a tela é mobile ou não
+  const isMobile = useMedia('(max-width: 40rem)');
 
-  function handleMobile() {
-    setIsMobile(null);
-  }
+  const navigate = useNavigate();
 
   function handleLogout() {
     // limpa o token e realiza o logout do usuário
