@@ -37,3 +37,106 @@
 .user-header-nav a.active svg > * {
   fill: #fb1;
 }
+
+/* botão do mobile menu */
+.mobile-menu-button {
+  background-color: #eee;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+/* ícone do menu hamburguer */
+.mobile-menu-button::after {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  /* utilizando sombras para dar o efeito de 3 linhas */
+  box-shadow:
+    0 6px currentColor,
+    0 -6px currentColor;
+  transition: 0.2s;
+}
+
+.mobile-menu-button:focus,
+.mobile-menu-button:hover,
+.mobile-menu-button-active {
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+  color: #fb1;
+}
+
+.mobile-menu-button-active::after {
+  transform: rotate(-90deg);
+  width: 4px;
+  height: 4px;
+  box-shadow:
+    0 8px currentColor,
+    0 -8px currentColor;
+}
+
+/* mobile menu */
+.user-header-nav-mobile {
+  display: block;
+  position: absolute;
+  top: 70px;
+  right: 0px;
+  padding: 0 1rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  transform: translateX(-10px);
+  opacity: 0;
+  /* desativa os eventos de clique quando o menu está fechado */
+  pointer-events: none;
+}
+
+.user-header-nav-mobile a,
+.user-header-nav-mobile button {
+  display: flex;
+  align-items: center;
+  background: none;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.user-header-nav-mobile a:hover,
+.user-header-nav-mobile button:hover,
+.user-header-nav-mobile a:hover svg > *,
+.user-header-nav-mobile button:hover svg > * {
+  color: #fb1;
+  fill: #fb1;
+}
+
+.user-header-nav-mobile button {
+  border-bottom: none;
+}
+
+.user-header-nav-mobile svg {
+  margin-right: 0.5rem;
+}
+
+/* mobile menu active */
+.user-header-nav-mobile-active {
+  transition: 0.3s;
+  transform: initial;
+  opacity: 1;
+  z-index: 100;
+  /* ativa os eventos de clique quando o menu está ativo */
+  pointer-events: initial;
+}

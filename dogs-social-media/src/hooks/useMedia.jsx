@@ -16,6 +16,9 @@ const useMedia = media => {
       // setamos o valor do estado 'match' para o valor retornado pela função
       setMatch(matches);
     }
+    // executamos a funçao logo ao carregar a tela para garantir a verificação
+    // do tamanho da mesma e ativar o menu mobile se for o caso
+    changeMatch();
 
     // adicionamos no evento 'resize' (ou seja, sempre que a tela mudar de tamanho)
     // do objeto window a função 'changeMatch'
