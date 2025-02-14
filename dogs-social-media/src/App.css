@@ -51,6 +51,30 @@ input {
   color: #333;
 }
 
+/* remove arrows from input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* change selection color */
+::-moz-selection {
+  color: #333;
+  background: var(--color-yellow-first);
+}
+
+::selection {
+  color: #333;
+  background: var(--color-yellow-first);
+}
+
 .container {
   /*max-width: 50rem; 50 * 16px = 800px */
   max-width: 63rem;

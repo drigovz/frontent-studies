@@ -31,11 +31,11 @@
 .user-header-nav a.active {
   background-color: #fff;
   box-shadow: 0 0 0 3px #fea;
-  border-color: #fb1;
+  border-color: var(--color-yellow-first);
 }
 
 .user-header-nav a.active svg > * {
-  fill: #fb1;
+  fill: var(--color-yellow-first);
 }
 
 /* botão do mobile menu */
@@ -74,8 +74,8 @@
   outline: none;
   background-color: #fff;
   box-shadow: 0 0 0 3px #fea;
-  border-color: #fb1;
-  color: #fb1;
+  border-color: var(--color-yellow-first);
+  color: var(--color-yellow-first);
 }
 
 .mobile-menu-button-active::after {
@@ -119,8 +119,8 @@
 .user-header-nav-mobile button:hover,
 .user-header-nav-mobile a:hover svg > *,
 .user-header-nav-mobile button:hover svg > * {
-  color: #fb1;
-  fill: #fb1;
+  color: var(--color-yellow-first);
+  fill: var(--color-yellow-first);
 }
 
 .user-header-nav-mobile button {
