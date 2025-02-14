@@ -2,7 +2,7 @@ import { createContext, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TOKEN_POST, TOKEN_VALIDATE_POST } from '../api/tokenEndpoints';
 import { USER_GET } from '../api/userEndpoints';
-import { TOKEN_STORAGE_KEY } from '../utilities/consts';
+import { removeToken, getToken, saveToken } from '../utilities/utils';
 
 export const UserContext = createContext();
 
@@ -12,18 +12,6 @@ export const UserContextStorage = ({ children }) => {
   const [userIsLogged, setUserIsLogged] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
-  function getToken() {
-    return window.localStorage.getItem(TOKEN_STORAGE_KEY);
-  }
-
-  function saveToken(token) {
-    window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
-  }
-
-  function removeToken() {
-    window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-  }
 
   // função de logout, remove o token e limpa todos os estados do usuário
   const userLogout = useCallback(async function () {

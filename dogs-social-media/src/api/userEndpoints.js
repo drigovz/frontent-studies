@@ -24,3 +24,19 @@ export const USER_POST = body => {
     },
   };
 };
+
+export const PHOTO_POST = (formData, token) => {
+  return {
+    url: `${API_URL}/api/photo`,
+    mode: 'no-cors',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        //'Content-type': 'multipart/form-data',
+        // 'Access-Control-Allow-Origin': '*',
+      },
+    },
+    body: formData,
+  };
+};

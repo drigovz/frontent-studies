@@ -4,7 +4,11 @@ import './styles.css';
 const Input = props => {
   return (
     <div className="wrapper">
-      {props.label && <label htmlFor={props.id}>{props.label}</label>}
+      {props.label && (
+        <label className="label" htmlFor={props.id}>
+          {props.label}
+        </label>
+      )}
 
       <input
         id={props.id}

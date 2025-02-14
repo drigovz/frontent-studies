@@ -1,20 +1,5 @@
 import { useState } from 'react';
-
-const validations = {
-  // cria um objeto com a regex e a mensagem de erro para validar o email
-  email: {
-    regex:
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    message: 'Invalid email',
-  },
-  password: {
-    regex: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
-    message: `Password must contain:
-        at least 8 characters
-        with at least one capital letter
-        one number and one special character`,
-  },
-};
+import { validations } from '../utilities/utils';
 
 const useForm = validationType => {
   // valor e função para atualizar o valor
