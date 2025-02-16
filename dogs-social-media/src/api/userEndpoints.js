@@ -40,3 +40,17 @@ export const PHOTO_POST = (formData, token) => {
     body: formData,
   };
 };
+
+export const PHOTOS_GET = ({ page, total, user, token }) => {
+  return {
+    url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+    options: {
+      method: 'GET',
+      // Desabilita o cache para aparecerem as fotos novas do usuario assim que elas forem postadas
+      cache: 'no-store',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};

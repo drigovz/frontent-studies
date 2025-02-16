@@ -1,5 +1,13 @@
+import FeedModal from '../components/FeedModal';
+import FeedPhotos from '../components/FeedPhotos';
+
 const Feed = () => {
-  return <p>Feed</p>;
+  return (
+    <>
+      <FeedModal />
+      <FeedPhotos />
+    </>
+  );
 };
 
 export default Feed;

@@ -1,0 +1,55 @@
+/*
+  :nth-child(2) é utilizado para selecionar o segundo elemento filho da classe feed-item.
+  e aplicar um estilo css específico a ele.
+*/
+.feed-item:nth-child(2),
+.feed-item:nth-child(5) {
+  grid-column: 2 / 4; /* vai ocupar da coluna 2 até a coluna 4 */
+  grid-row: span 2; /* vai expandir 2 linhas para baixo */
+}
+
+/* estilização do contador de visualizações, que fica porcima da imgem */
+.feed-item {
+  display: grid;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* fazemos com que o span ocupe a mesma área de grid que a img */
+.feed-item img {
+  grid-area: 1/1;
+}
+
+.feed-item span {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  grid-area: 1/1;
+}
+
+.feed-item:hover span {
+  display: flex;
+}
+
+.feed-item span::before {
+  width: 16px;
+  height: 10px;
+  content: '';
+  display: inline-block;
+  margin-right: 0.25rem;
+  background: url('../../assets/view.svg') no-repeat;
+}
+
+/* reseta o estilo do grid-column e grid-row para o padrão */
+@media (max-width: 40rem) {
+  .feed-item:nth-child(2),
+  .feed-item:nth-child(5) {
+    grid-column: initial;
+    grid-row: initial;
+  }
+}
