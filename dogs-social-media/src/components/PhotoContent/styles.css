@@ -1,0 +1,102 @@
+.photo {
+  /* colocar a foto sempre no centro do modal */
+  margin: auto;
+  height: 40rem;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  display: grid;
+  /* para cima e para baixo (40rem) mesmo valor do height */
+  grid-template-columns: 40rem 30rem;
+  /* primeira coluna é automática pra comportar as informações de nome, autor, etc
+    segunda coluna é 1fr pra ser um tamanho fixo
+    terceira coluna (comentários) é automática para ir comportando infinítos comentários
+   */
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.photo-details {
+  padding: 2rem 2rem 0rem 2rem;
+}
+
+.photo-container {
+  grid-row: 1/4;
+}
+
+.photo-container img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.comments {
+  padding: 0 2rem;
+}
+
+.container-author {
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-author a:hover {
+  text-decoration: underline;
+}
+
+.details-views::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  margin-right: 0.5rem;
+  background: url('../../assets/view-black.svg') no-repeat;
+}
+
+.item-attributes {
+  display: flex;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.item-attributes li {
+  margin-right: 2rem;
+}
+
+/* criando um separador de cada item */
+.item-attributes li::before {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  margin-right: 0.5rem;
+  margin-top: 5px;
+  position: relative;
+  top: 3px;
+  width: 2px;
+  background-color: #333;
+}
+
+@media (max-width: 64rem) {
+  .photo {
+    height: auto;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    grid-template-columns: minmax(20rem, 40rem);
+  }
+
+  .photo-container {
+    grid-row: 1;
+  }
+}

@@ -28,6 +28,7 @@ export const UserContextStorage = ({ children }) => {
       try {
         setError(null);
         setLoading(true);
+        setUserIsLogged(false);
 
         // tenta pegar o token se ele já existir
         const token = getToken();
@@ -78,6 +79,7 @@ export const UserContextStorage = ({ children }) => {
       if (!response.ok) {
         setError(`Error: Login error: ${response.statusText}`);
         setLoading(false);
+        setUserIsLogged(false);
         removeToken();
         return;
       }
@@ -92,6 +94,7 @@ export const UserContextStorage = ({ children }) => {
     } catch (error) {
       setError('Error fetching login:', error.message);
       setLoading(false);
+      setUserIsLogged(false);
       removeToken();
     }
   }
