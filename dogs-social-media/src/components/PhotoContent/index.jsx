@@ -14,7 +14,7 @@ const PhotoContent = ({ data }) => {
 
       <aside className="photo-details">
         <div>
-          <p>
+          <p className="container-author">
             <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
             <span className="details-views">{photo.acessos}</span>
           </p>
@@ -30,7 +30,7 @@ const PhotoContent = ({ data }) => {
         </div>
       </aside>
 
-      <PhotoComments id={photo.id} comments={photo.comments} />
+      <PhotoComments className="comments" id={photo.id} comments={photo.comments} />
     </section>
   );
 };

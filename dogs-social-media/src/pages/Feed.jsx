@@ -8,9 +8,9 @@ const Feed = () => {
 
   return (
     <>
-      {modalPhoto && <FeedModal photo={modalPhoto} />}
       {/* passamos a função que irá atualizar o estado da foto que está
       selecionada no momento para o componente FeedPhotos */}
+      {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />}
       <FeedPhotos setModalPhoto={setModalPhoto} />
     </>
   );
