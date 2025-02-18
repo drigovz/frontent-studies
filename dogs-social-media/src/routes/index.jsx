@@ -15,7 +15,14 @@ import AccountContainer from '../pages/AccountContainer';
 export const ApplicationRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
 
       <Route path="/" element={<Login />}>
         <Route path="login" element={<LoginForm />} />
