@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { PHOTOS_GET } from '../../api/userEndpoints';
+import { PHOTOS_GET } from '../../api/photoEndpoints';
 import FeedPhotosItem from '../FeedPhotosItem';
 import Error from '../Error';
 import Loading from '../Loading';
-import useFetch from '../../Hooks/useFetch';
+import useFetch from '../../hooks/useFetch';
 import './style.css';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
 
   // useEffect para já carregar as fotos quando entrar na página
@@ -14,7 +14,6 @@ const FeedPhotos = () => {
     async function fetchPhotos() {
       const { url, option } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
       const { response, json } = await request(url, option);
-      console.log(json);
     }
     fetchPhotos();
   }, [request]);
@@ -28,7 +27,7 @@ const FeedPhotos = () => {
       <>
         <ul className="feed-container animeLeft">
           {data.map(photo => (
-            <FeedPhotosItem key={photo.id} photo={photo} />
+            <FeedPhotosItem key={photo.id} photo={photo} setModalPhoto={setModalPhoto} />
           ))}
         </ul>
       </>

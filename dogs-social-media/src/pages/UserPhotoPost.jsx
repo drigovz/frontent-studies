@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useForm from '../hooks/useForm';
 import useFetch from '../hooks/useFetch';
 import { validationType } from '../utilities/enums';
-import { PHOTO_POST } from '../api/userEndpoints';
+import { PHOTO_POST } from '../api/photoEndpoints';
 import { getToken } from '../utilities/utils';
 import Input from '../components/Input';
 import Error from '../components/Error';
