@@ -11,8 +11,8 @@ export const PHOTO_POST = (formData, token) => {
         //'Content-type': 'multipart/form-data',
         // 'Access-Control-Allow-Origin': '*',
       },
+      body: formData,
     },
-    body: formData,
   };
 };
 
