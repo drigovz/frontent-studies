@@ -1,0 +1,63 @@
+.form-comments {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  margin: 1rem;
+}
+
+.textarea-comments {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  resize: none;
+  border: 1px solid var(--color-gray-first);
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-gray-first);
+  transition: 0.2s;
+}
+
+.textarea-comments:focus,
+.textarea-comments:hover {
+  outline: none;
+  border-color: var(--color-yellow-first);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px var(--color-yellow-third);
+}
+
+.button-send-posts {
+  border: none;
+  cursor: pointer;
+  color: var(--color-gray-second);
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.button-send-posts:focus,
+.button-send-posts:hover {
+  outline: none;
+}
+
+.button-send-posts:focus svg path,
+.button-send-posts:hover svg path {
+  fill: var(--color-yellow-first);
+  stroke: #fb1;
+}
+
+/* criando uma animação para dar a ilusão que o cachorro do botão está latindo */
+.button-send-posts:focus svg g,
+.button-send-posts:hover svg g {
+  animation: bark 0.6s infinite;
+}
+
+@keyframes bark {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
