@@ -43,7 +43,7 @@
 
 .button-send-posts:focus svg path,
 .button-send-posts:hover svg path {
-  fill: #fea;
+  fill: var(--color-yellow-first);
   stroke: #fb1;
 }
 

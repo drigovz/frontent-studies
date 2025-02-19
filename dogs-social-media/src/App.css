@@ -15,7 +15,7 @@
 body {
   padding-top: 4rem;
   margin: 0;
-  color: #333;
+  color: var(--color-gray-second);
   font-family: var(--type-firts);
 }
 
@@ -37,7 +37,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: var(--color-gray-second);
 }
 
 img {
@@ -58,7 +58,7 @@ input {
   display: block;
   font-size: 1rem;
   font-family: var(--type-firts);
-  color: #333;
+  color: var(--color-gray-second);
 }
 
 /* remove arrows from input number */
@@ -76,12 +76,12 @@ input[type='number'] {
 
 /* change selection color */
 ::-moz-selection {
-  color: #333;
+  color: var(--color-gray-second);
   background: var(--color-yellow-first);
 }
 
 ::selection {
-  color: #333;
+  color: var(--color-gray-second);
   background: var(--color-yellow-first);
 }
 
