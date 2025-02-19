@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import PhotoCommentsForm from '../PhotoCommentsForm';
 import './styles.css';
@@ -10,9 +10,23 @@ const PhotoComments = props => {
   // definimos em uma função de callback um estado inicial que irá executar apenas uma vez
   const [comments, setComments] = useState(() => props.comments);
 
+  // com o useRef criamos a possibilidade de comunicar diretamente com o componente que desejamos
+  const commentRef = useRef(null);
+
+  // com o useEffect para que através da referência atual do componente que
+  // fizemos referencia com o useRef, possamos aplicar alguma interação com ele
+  // aplicaremos esse efeito, toda a vez que os comentários mudarem
+  useEffect(() => {
+    // com o scrollTop estamos indicando que desejamos fazer o scroll para o topo desse componente
+    // e passmos como valor pra ele, o valor obtido através do scrollHeight
+    // e com o scrollHeight estamos indicando o final do componente (que nesse caso é o último item do li onde estão os comentários)
+    commentRef.current.scrollTop = commentRef.current.scrollHeight;
+  }, [comments]);
+
   return (
     <>
-      <ul className="comment-list">
+      {/* indica que queremos fazer referência a esse componente */}
+      <ul ref={commentRef} className="comment-list">
         {comments &&
           comments.map(comment => (
             <li key={comment.comment_ID}>

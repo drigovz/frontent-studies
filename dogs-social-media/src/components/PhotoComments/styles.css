@@ -1,2 +1,13 @@
 .comment-list {
+  /* criar barra de scroll */
+  overflow-y: auto;
+  /* quebrar a palavra quando está muito grande */
+  word-break: break-word;
+  padding: 0 2rem;
+  width: 97%;
+}
+
+.comment-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }

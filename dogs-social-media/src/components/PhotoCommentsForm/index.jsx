@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import { COMMENT_POST } from '../../api/commentsEndpoints';
 import { getToken } from '../../utilities/utils';
 import Send from '../../assets/send.svg?react';
+import './styles.css';
 
 const PhotoCommentsForm = ({ id, setComments }) => {
   const [comment, setComment] = useState('');
@@ -34,10 +35,17 @@ const PhotoCommentsForm = ({ id, setComments }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Textarea placeholder="comment..." id={comment} name={comment} onChange={handleChange} value={comment} />
+      <form className="form-comments" onSubmit={handleSubmit}>
+        <Textarea
+          className="textarea-comments"
+          placeholder="comment..."
+          id={comment}
+          name={comment}
+          onChange={handleChange}
+          value={comment}
+        />
 
-        <button>
+        <button className="button-send-posts">
           <Send />
         </button>
 
