@@ -41,3 +41,15 @@ export const PHOTO_GET = (id, token) => {
     },
   };
 };
+
+export const PHOTO_DELETE = (id, token) => {
+  return {
+    url: `${API_URL}/api/photo/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
