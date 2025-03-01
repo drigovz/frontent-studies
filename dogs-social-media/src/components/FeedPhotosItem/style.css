@@ -17,7 +17,7 @@
 }
 
 /* fazemos com que o span ocupe a mesma área de grid que a img */
-.feed-item img {
+.feed-item > figure {
   grid-area: 1/1;
 }
 

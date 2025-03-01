@@ -1,3 +1,4 @@
+import Photo from '../Photo';
 import './style.css';
 
 const FeedPhotosItem = ({ photo, setModalPhoto }) => {
@@ -9,7 +10,14 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
 
   return (
     <li className="feed-item" onClick={handleClick}>
-      <img
+      {/* <img
+        //loading="lazy"
+        //data-src={photo.src}
+        src={photo.src}
+        title={photo.title}
+        alt={photo.title}
+      /> */}
+      <Photo
         //loading="lazy"
         //data-src={photo.src}
         src={photo.src}
