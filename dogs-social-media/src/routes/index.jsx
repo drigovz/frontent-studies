@@ -11,6 +11,7 @@ import Feed from '../pages/Feed';
 import UserPhotoPost from '../pages/UserPhotoPost';
 import UserStatistics from '../pages/UserStatistics';
 import AccountContainer from '../pages/AccountContainer';
+import UserProfile from '../pages/UserProfile';
 
 export const ApplicationRoutes = () => {
   return (
@@ -43,6 +44,7 @@ export const ApplicationRoutes = () => {
         <Route path="account/post" element={<UserPhotoPost />} />
         <Route path="account/statistics" element={<UserStatistics />} />
       </Route>
+      <Route path="profile/:user" element={<UserProfile />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
