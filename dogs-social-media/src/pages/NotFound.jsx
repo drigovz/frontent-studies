@@ -1,8 +1,9 @@
 function NotFound() {
   return (
-    <>
-      <h1>NotFound</h1>
-    </>
+    <section className="container main-container">
+      <h1 className="title">NotFound</h1>
+      <p>Not found page!</p>
+    </section>
   );
 }
 
