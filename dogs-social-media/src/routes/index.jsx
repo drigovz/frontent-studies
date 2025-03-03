@@ -29,7 +29,7 @@ export const ApplicationRoutes = () => {
         <Route path="login" element={<LoginForm />} />
         <Route path="login/create" element={<LoginCreate />} />
         <Route path="login/forgot-password" element={<LoginLost />} />
-        <Route path="login/reset" element={<LoginResetPassword />} />
+        <Route path="login/reset-password" element={<LoginResetPassword />} />
       </Route>
 
       <Route
