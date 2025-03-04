@@ -12,15 +12,10 @@ const BrowserTab = props => {
   return <></>;
 };
 
-// definição de valor padrão
-BrowserTab.defaultProps = {
-  description: '',
-};
-
 // definição de tipagem
 BrowserTab.prototypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.string || '',
 };
 
 export default BrowserTab;
