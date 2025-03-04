@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import BrowserTab from '../components/BrowserTab';
 import FeedModal from '../components/FeedModal';
 import FeedPhotos from '../components/FeedPhotos';
 
@@ -54,6 +55,8 @@ const Feed = () => {
 
   return (
     <>
+      <BrowserTab title="Feed" description="Dogs social media" />
+
       {/* passamos a função que irá atualizar o estado da foto que está
       selecionada no momento para o componente FeedPhotos */}
       {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />}

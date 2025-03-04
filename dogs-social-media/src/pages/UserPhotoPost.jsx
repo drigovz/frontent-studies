@@ -6,6 +6,7 @@ import { validationType } from '../utilities/enums';
 import { PHOTO_POST } from '../api/photoEndpoints';
 import { getToken } from '../utilities/utils';
 import Input from '../components/Input';
+import BrowserTab from '../components/BrowserTab';
 import Error from '../components/Error';
 import './UserPhotoPost.css';
 
@@ -51,6 +52,8 @@ const UserPhotoPost = () => {
 
   return (
     <section className="user-photo-post animeLeft">
+      <BrowserTab title="Poste your photo" description="Poste your photo" />
+
       <form onSubmit={handleSubmit}>
         <Input label="Name" type="text" id="name" name="name" {...name} />
         <Input label="Weight" type="number" id="weight" name="weight" {...weight} />
