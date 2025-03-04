@@ -7,15 +7,17 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div id="app">
       <BrowserRouter>
         <UserContextStorage>
-          <Header />
-          <ApplicationRoutes />
-          <Footer />
+          <main id="app-main">
+            <Header />
+            <ApplicationRoutes />
+            <Footer />
+          </main>
         </UserContextStorage>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
