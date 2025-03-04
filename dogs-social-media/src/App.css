@@ -10,6 +10,7 @@
   --color-gray-first: #eee;
   --color-gray-second: #333;
   --color-red-first: #f31;
+  --footer-height: 10rem;
 }
 
 body {
@@ -83,6 +84,17 @@ input[type='number'] {
 ::selection {
   color: var(--color-gray-second);
   background: var(--color-yellow-first);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  /* calculamos o tamanho de 100% do height da tela + os 10rem do footer*/
+  min-height: calc(100vh + var(--footer-height));
+}
+
+#app-main {
+  flex: 1;
 }
 
 .container {

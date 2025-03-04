@@ -1,0 +1,11 @@
+.footer {
+  background-color: var(--color-yellow-first);
+  padding: 3rem 1rem 0 1rem;
+  height: var(--footer-height);
+  text-align: center;
+  color: var(--color-yellow-second);
+}
+
+.footer p {
+  margin-top: 1rem;
+}
