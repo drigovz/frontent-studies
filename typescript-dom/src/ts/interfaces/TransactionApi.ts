@@ -9,5 +9,5 @@ export default interface TransactionApi {
   ID: number;
   Nome: string;
   Status: PaymentStatus;
-  Valor: string;
+  ["Valor (R$)"]: string;
 }
