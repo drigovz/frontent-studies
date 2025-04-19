@@ -2,6 +2,40 @@ body {
   font-size: 1.25rem;
   font-family: sans-serif;
   padding: 0;
-  background: #17222a;
+  background: ghostwhite;
   color: #aec2c9;
+}
+
+html {
+  background-color: #fff !important;
+}
+
+table {
+  border-spacing: 0;
+  text-align: left;
+  width: 100%;
+  font-size: 1rem;
+}
+
+table td,
+table th {
+  padding: 0.5rem 1rem;
+}
+
+table tr:nth-child(even) {
+  background-color: #e6ffff;
+}
+
+h2,
+p {
+  margin-left: 1rem;
+}
+
+h2 {
+  border-top: 6px solid ghostwhite;
+  padding-top: 1rem;
+}
+
+div {
+  border-top: 3px;
 }
