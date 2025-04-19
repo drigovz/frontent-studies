@@ -10,12 +10,20 @@ function normalizeAmoutValue(value: string): number | null {
   return isNaN(number) ? null : number;
 }
 
+function normalizeDateTimeValue(value: string): Date {
+  const [date, time] = value.split(" ");
+  const [day, month, year] = date.split("/").map(Number);
+  const [hour, minutes] = time.split(":").map(Number);
+
+  return new Date(year, month - 1, day, hour, minutes);
+}
+
 export default function normalizedInterface(
   transaction: TransactionApi
 ): Transaction {
   return {
     new: Boolean(transaction["Cliente Novo"]),
-    date: transaction.Data,
+    date: normalizeDateTimeValue(transaction.Data),
     email: transaction.Email,
     paymentType: transaction["Forma de Pagamento"],
     id: transaction.ID,

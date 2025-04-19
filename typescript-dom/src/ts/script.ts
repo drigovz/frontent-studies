@@ -9,7 +9,7 @@ async function handleData() {
 
   const transactions = data.map(normalizedInterface);
   transactions.forEach((item) => {
-    console.log(item.value);
+    console.log(item);
   });
 }
 

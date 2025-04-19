@@ -3,7 +3,7 @@ import { PaymentType } from "../@types/PaymentType";
 
 export default interface Transaction {
   new: boolean;
-  date: string;
+  date: Date;
   email: string;
   paymentType: PaymentType;
   id: number;
