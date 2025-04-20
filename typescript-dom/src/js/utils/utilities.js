@@ -1,3 +1,4 @@
+import Statistics from "../domain/Statistics";
 /**
  *
  * @param value need to pass string on format '0.000,00' returns '0000.00'
@@ -24,5 +25,31 @@ export default function normalizedInterface(transaction) {
         amount: transaction["Valor (R$)"],
         value: normalizeAmoutValue(transaction["Valor (R$)"]),
     };
+}
+export function printTransactions(transactions) {
+    const table = document.querySelector("#transactions tbody");
+    if (!table)
+        return;
+    transactions.forEach((transaction) => {
+        table.innerHTML += `
+      <tr>
+        <td>${transaction.name}</td>
+        <td>${transaction.email}</td>
+        <td>R$ ${transaction.amount}</td>
+        <td>${transaction.paymentType}</td>
+        <td>${transaction.status}</td>
+      </tr>
+    `;
+    });
+}
+export function printStatistics(transactions) {
+    const statistics = new Statistics(transactions);
+    const totalElement = document.querySelector("#total span");
+    if (totalElement) {
+        totalElement.innerText = statistics.total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        });
+    }
 }
 //# sourceMappingURL=utilities.js.map
