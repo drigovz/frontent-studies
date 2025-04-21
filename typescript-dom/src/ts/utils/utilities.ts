@@ -1,4 +1,5 @@
-import Statistics from "../domain/Statistics";
+import Statistics from "../domain/Statistics.js";
+import CountList from "../interfaces/CountList.js";
 import Transaction from "../interfaces/Transaction";
 import TransactionApi from "../interfaces/TransactionApi";
 
@@ -61,4 +62,16 @@ export function printStatistics(transactions: Transaction[]): void {
       currency: "BRL",
     });
   }
+}
+
+export function countBy(arr: (string | number)[]): CountList {
+  return arr.reduce((total: CountList, item) => {
+    if (total[item]) {
+      total[item] += 1;
+    } else {
+      total[item] + 1;
+    }
+
+    return total;
+  }, {});
 }

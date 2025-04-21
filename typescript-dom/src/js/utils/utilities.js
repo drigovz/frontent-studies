@@ -1,4 +1,4 @@
-import Statistics from "../domain/Statistics";
+import Statistics from "../domain/Statistics.js";
 /**
  *
  * @param value need to pass string on format '0.000,00' returns '0000.00'
@@ -51,5 +51,16 @@ export function printStatistics(transactions) {
             currency: "BRL",
         });
     }
+}
+export function countBy(arr) {
+    return arr.reduce((total, item) => {
+        if (total[item]) {
+            total[item] += 1;
+        }
+        else {
+            total[item] + 1;
+        }
+        return total;
+    }, {});
 }
 //# sourceMappingURL=utilities.js.map
