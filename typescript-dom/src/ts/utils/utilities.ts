@@ -67,9 +67,6 @@ function printList(list: CountList, containerId: string): void {
 export function printStatistics(transactions: Transaction[]): void {
   const statistics = new Statistics(transactions);
 
-  console.log(statistics.payments);
-  console.log(statistics.status);
-
   printList(statistics.payments, "payments");
   printList(statistics.status, "status");
 
@@ -79,6 +76,11 @@ export function printStatistics(transactions: Transaction[]): void {
       style: "currency",
       currency: "BRL",
     });
+  }
+
+  const dayElement = document.querySelector<HTMLElement>("#bestDay span");
+  if (dayElement) {
+    dayElement.innerText = statistics.bestDay[0];
   }
 }
 

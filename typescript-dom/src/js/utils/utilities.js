@@ -54,8 +54,6 @@ function printList(list, containerId) {
 }
 export function printStatistics(transactions) {
     const statistics = new Statistics(transactions);
-    console.log(statistics.payments);
-    console.log(statistics.status);
     printList(statistics.payments, "payments");
     printList(statistics.status, "status");
     const totalElement = document.querySelector("#total span");
@@ -64,6 +62,10 @@ export function printStatistics(transactions) {
             style: "currency",
             currency: "BRL",
         });
+    }
+    const dayElement = document.querySelector("#bestDay span");
+    if (dayElement) {
+        dayElement.innerText = statistics.bestDay[0];
     }
 }
 export function countBy(arr) {
