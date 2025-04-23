@@ -53,8 +53,26 @@ export function printTransactions(transactions: Transaction[]): void {
   });
 }
 
+function printList(list: CountList, containerId: string): void {
+  const containerElement = document.getElementById(containerId) as HTMLElement;
+  if (containerElement) {
+    Object.keys(list).forEach((key) => {
+      containerElement.innerHTML += `
+        <p>${key}: ${list[key]}</p>
+      `;
+    });
+  }
+}
+
 export function printStatistics(transactions: Transaction[]): void {
   const statistics = new Statistics(transactions);
+
+  console.log(statistics.payments);
+  console.log(statistics.status);
+
+  printList(statistics.payments, "payments");
+  printList(statistics.status, "status");
+
   const totalElement = document.querySelector<HTMLElement>("#total span");
   if (totalElement) {
     totalElement.innerText = statistics.total.toLocaleString("pt-BR", {
@@ -69,7 +87,7 @@ export function countBy(arr: (string | number)[]): CountList {
     if (total[item]) {
       total[item] += 1;
     } else {
-      total[item] + 1;
+      total[item] = 1;
     }
 
     return total;
