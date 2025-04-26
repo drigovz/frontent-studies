@@ -22,6 +22,7 @@ export default class Slide {
     this.slideActive = this.slides[this.index];
 
     this.show(this.index);
+    this.init();
   }
 
   private hide(slide: Element) {
@@ -38,5 +39,40 @@ export default class Slide {
     this.slides.forEach((slide) => this.hide(slide));
     // depois ativamos somente no elemento cujo index foi passado por parametro
     this.slideActive.classList.add("active");
+  }
+
+  private prev() {
+    const prevSlideItem =
+      this.index > 0 ? this.index - 1 : this.slides.length - 1;
+    this.show(prevSlideItem);
+  }
+
+  private next() {
+    // this.index + 1 -> pq o array começa no zero
+    // calculamos se o índice atual é menor que o total de itens no slide
+    // se for, ele seta como o proximo item do slide somado com 1
+    // se for maior, ele retorna pro zero
+    const nextSlideItem =
+      this.index + 1 < this.slides.length ? this.index + 1 : 0;
+    this.show(nextSlideItem);
+  }
+
+  private addControls() {
+    // cria os botões - next e prev
+    const prevBtn = document.createElement("button");
+    prevBtn.innerText = "Prev";
+    const nextBtn = document.createElement("button");
+    nextBtn.innerText = "Next";
+    this.controls.appendChild(prevBtn);
+    this.controls.appendChild(nextBtn);
+
+    // pointerup -> evento que ativa somente quando a pessoa solta o dedo ou o ponteiro do elemento
+    nextBtn.addEventListener("pointerup", () => this.prev());
+    prevBtn.addEventListener("pointerup", () => this.next());
+  }
+
+  private init() {
+    this.addControls();
+    this.show(this.index);
   }
 }
