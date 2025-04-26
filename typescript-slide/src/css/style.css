@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#slide-elements {
+  display: grid;
+}
+
+/* estilizando qualquer filho direto do elemento slide-elements */
+#slide-elements > * {
+  /* sobrepor um item sobre o outro */
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: none;
+}
+
+#slide-elements > .active {
+  opacity: 1;
+  visibility: visible;
+}
