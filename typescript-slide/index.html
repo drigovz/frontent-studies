@@ -3,7 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/style.css" />
     <title>Slide</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Slide Stories</h1>
+    <div id="slide">
+      <div id="slide-elements">
+        <img
+          src="./src/assets/img1.jpg"
+          alt="img1"
+          srcset="./src/assets/img1.jpg"
+        />
+        <img
+          src="./src/assets/img2.jpg"
+          alt="img1"
+          srcset="./src/assets/img2.jpg"
+        />
+        <img
+          src="./src/assets/img3.jpg"
+          alt="img1"
+          srcset="./src/assets/img3.jpg"
+        />
+        <!-- playsinline - reproduzir video na janela que ele está, sem que ele ocupe toda a tela -->
+        <video src="./src/assets/video.mp4" playsinline></video>
+      </div>
+    </div>
+    <script type="module" src="./src/js/script.js"></script>
+  </body>
 </html>
