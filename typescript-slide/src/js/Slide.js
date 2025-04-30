@@ -7,6 +7,8 @@ export default class Slide {
     index;
     slideActive;
     timeout;
+    pausedTimeout;
+    paused;
     constructor(container, slides, controls, time = 5000) {
         this.container = container;
         this.slides = slides;
@@ -16,6 +18,8 @@ export default class Slide {
         this.index = 0;
         this.slideActive = this.slides[this.index];
         this.timeout = null;
+        this.pausedTimeout = null;
+        this.paused = false;
         this.show(this.index);
         this.init();
     }
@@ -41,16 +45,38 @@ export default class Slide {
         this.auto(this.time);
     }
     prev() {
+        // se tiver pausado, não executa a função
+        if (this.paused)
+            return;
         const prevSlideItem = this.index > 0 ? this.index - 1 : this.slides.length - 1;
         this.show(prevSlideItem);
     }
     next() {
+        if (this.paused)
+            return;
         // this.index + 1 -> pq o array começa no zero
         // calculamos se o índice atual é menor que o total de itens no slide
         // se for, ele seta como o proximo item do slide somado com 1
         // se for maior, ele retorna pro zero
         const nextSlideItem = this.index + 1 < this.slides.length ? this.index + 1 : 0;
         this.show(nextSlideItem);
+    }
+    pause() {
+        // timeout só ativar a pausa no slide após 300 ms
+        // isso pq assim, teremos a certeza de que a pessoa está pausando realmente
+        // e não apenas clicando para ir para o próximo slide.
+        this.pausedTimeout = new Timeout(() => {
+            this.paused = true;
+        }, 300);
+    }
+    continue() {
+        // para continuar, devemos limpar o pausedTimeout
+        this.pausedTimeout?.clear();
+        if (this.paused) {
+            this.paused = false;
+            // devemos chamar novamente o auto para continuar a execução do slide assim que a pessoa soltar o pointer
+            this.timeout?.continue();
+        }
     }
     addControls() {
         // cria os botões - next e prev
@@ -60,6 +86,9 @@ export default class Slide {
         nextBtn.innerText = "Next";
         this.controls.appendChild(prevBtn);
         this.controls.appendChild(nextBtn);
+        // adicionando o evento de pointerdown para pausar o slide
+        this.controls.addEventListener("pointerdown", () => this.pause());
+        this.controls.addEventListener("pointerup", () => this.continue());
         // pointerup -> evento que ativa somente quando a pessoa solta o dedo ou o ponteiro do elemento
         nextBtn.addEventListener("pointerup", () => this.prev());
         prevBtn.addEventListener("pointerup", () => this.next());
