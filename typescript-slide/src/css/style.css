@@ -40,10 +40,48 @@ h1 {
   grid-area: 1/1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
 }
 
 #controls button {
   opacity: 0;
   appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#slide-progress {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+}
+
+#slide-progress > span {
+  flex: 1;
+  display: block;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#slide-progress .progress-item.active {
+  display: block;
+  height: inherit; /* inherit serve para herda a mesma altura do elemento pai (#slide-progress)  */
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: inherit;
+  transform: translateX(-100%);
+  animation: progress forwards linear running;
+}
+
+#slide-progress .progress-item.paused {
+  animation-play-state: paused;
+}
+
+@keyframes progress {
+  to {
+    transform: initial;
+  }
 }

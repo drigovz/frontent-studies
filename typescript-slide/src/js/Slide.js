@@ -1,14 +1,16 @@
 import Timeout from "./Timeout.js";
 export default class Slide {
+    slideActive;
     container;
     slides;
     controls;
     time;
     index;
-    slideActive;
     timeout;
     pausedTimeout;
     paused;
+    progressItens;
+    progressBarActive;
     constructor(container, slides, controls, time = 5000) {
         this.container = container;
         this.slides = slides;
@@ -22,6 +24,8 @@ export default class Slide {
         this.timeout = null;
         this.pausedTimeout = null;
         this.paused = false;
+        this.progressItens = null;
+        this.progressBarActive = null;
         this.show(this.index);
         this.init();
     }
@@ -40,6 +44,10 @@ export default class Slide {
         //sempre antes de iniciarmos um novo timeout, limpamos o anterior
         this.timeout?.clear();
         this.timeout = new Timeout(() => this.next(), time);
+        // aqui vamos utilizar o tempo de cada um dos slides, como o tempo da duração
+        // da animação do CSS da barra de progresso
+        if (this.progressBarActive)
+            this.progressBarActive.style.animationDuration = `${time}ms`;
     }
     autoplay(video) {
         // por questão de acessibilidade, não devemos deixar o vídeo com audio em autoplay
@@ -73,6 +81,14 @@ export default class Slide {
         // salvamos no localStorage o slide atual para quando a página atualizar
         // a reprodução do slide seguir de onde parou
         localStorage.setItem("activeSlide", String(this.index));
+        // verificando qual progressItem está ativo no momento
+        if (this.progressItens) {
+            this.progressBarActive = this.progressItens[this.index];
+            // primeiro removemos a classe active de todos os itens
+            this.progressItens.forEach((item) => item.classList.remove("active"));
+            // depois adicionamos a classe active no item ativo
+            this.progressBarActive.classList.add("active");
+        }
         // como o vídeo terá um tempo de execução diferente dos das imagens
         // devemos realizar essa verificação
         if (this.slideActive instanceof HTMLVideoElement) {
@@ -105,6 +121,8 @@ export default class Slide {
         // e não apenas clicando para ir para o próximo slide.
         this.pausedTimeout = new Timeout(() => {
             this.paused = true;
+            // aqui vamos pausar a barra de progresso
+            this.progressBarActive?.classList.add("paused");
             // se o slide atual for um video, devemos pausar o mesmo
             if (this.slideActive instanceof HTMLVideoElement)
                 this.slideActive.pause();
@@ -117,6 +135,8 @@ export default class Slide {
             this.paused = false;
             // devemos chamar novamente o auto para continuar a execução do slide assim que a pessoa soltar o pointer
             this.timeout?.continue();
+            // aqui vamos remover a classe de pausa da barra de progresso
+            this.progressBarActive?.classList.remove("paused");
             // se o slide atual for um video, devemos continuar o mesmo
             if (this.slideActive instanceof HTMLVideoElement)
                 this.slideActive.play();
@@ -134,11 +154,21 @@ export default class Slide {
         this.controls.addEventListener("pointerdown", () => this.pause());
         this.controls.addEventListener("pointerup", () => this.continue());
         // pointerup -> evento que ativa somente quando a pessoa solta o dedo ou o ponteiro do elemento
-        nextBtn.addEventListener("pointerup", () => this.prev());
-        prevBtn.addEventListener("pointerup", () => this.next());
+        prevBtn.addEventListener("pointerup", () => this.prev());
+        nextBtn.addEventListener("pointerup", () => this.next());
+    }
+    addSlideProgress() {
+        const progressContainer = document.createElement("div");
+        progressContainer.id = "slide-progress";
+        for (let index = 0; index < this.slides.length; index++) {
+            progressContainer.innerHTML += `<span><span class="progress-item"></span></span>`;
+        }
+        this.controls.appendChild(progressContainer);
+        this.progressItens = Array.from(document.querySelectorAll(".progress-item"));
     }
     init() {
         this.addControls();
+        this.addSlideProgress();
         this.show(this.index);
     }
 }
