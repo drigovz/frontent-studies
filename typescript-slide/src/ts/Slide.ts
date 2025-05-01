@@ -41,7 +41,7 @@ export default class Slide {
     this.init();
   }
 
-  private hide(slide: Element) {
+  private hide(slide: Element): void {
     slide.classList.remove("active");
 
     if (slide instanceof HTMLVideoElement) {
@@ -121,7 +121,7 @@ export default class Slide {
     }
   }
 
-  private prev() {
+  private prev(): void {
     // se tiver pausado, não executa a função
     if (this.paused) return;
 
@@ -130,7 +130,7 @@ export default class Slide {
     this.show(prevSlideItem);
   }
 
-  private next() {
+  private next(): void {
     if (this.paused) return;
 
     // this.index + 1 -> pq o array começa no zero
@@ -181,7 +181,7 @@ export default class Slide {
     }
   }
 
-  private addControls() {
+  private addControls(): void {
     // cria os botões - next e prev
     const prevBtn = document.createElement("button");
     prevBtn.innerText = "Prev";
@@ -214,7 +214,7 @@ export default class Slide {
     );
   }
 
-  private init() {
+  private init(): void {
     this.addControls();
     this.addSlideProgress();
     this.show(this.index);
