@@ -14,8 +14,10 @@ export default class Slide {
         this.slides = slides;
         this.controls = controls;
         this.time = time;
-        // inicia o índice e o slide atualmente ativo como o zero
-        this.index = 0;
+        // pegamos o slide atual do localStorage
+        this.index = localStorage.getItem("activeSlide")
+            ? Number(localStorage.getItem("activeSlide"))
+            : 0;
         this.slideActive = this.slides[this.index];
         this.timeout = null;
         this.pausedTimeout = null;
@@ -25,12 +27,38 @@ export default class Slide {
     }
     hide(slide) {
         slide.classList.remove("active");
+        if (slide instanceof HTMLVideoElement) {
+            // se for video, devemos pausar o video
+            // e retroceder o tempo dele para o zero, para quando voltarmos
+            // no slide do video, o video iniciar do zero
+            slide.currentTime = 0;
+            slide.pause();
+        }
     }
     // método para passar de um slide para outro automaticamente
     auto(time) {
         //sempre antes de iniciarmos um novo timeout, limpamos o anterior
         this.timeout?.clear();
         this.timeout = new Timeout(() => this.next(), time);
+    }
+    autoplay(video) {
+        // por questão de acessibilidade, não devemos deixar o vídeo com audio em autoplay
+        video.muted = true;
+        // autoplay do video
+        video.play();
+        // essa variável irá controlar se é a primeira vez que o video está reproduzindo ou não
+        // isso é necessário para que o duration do video não seja alterado toda a vez que pausarmos o video
+        let firstPaly = true;
+        // só vamos calcular o tempo de duração de video
+        // se ele estiver tocando/reproduzindo
+        video.addEventListener("playing", () => {
+            // o slide do vídeo deve ficar aparecendo todo o tempo do vídeo
+            // para isso, devemos definir o tempo de duração desse slide como
+            // o tempo de duração do vídeo, e pra transformar em milissagundos, multiplicamos por 1000
+            if (firstPaly)
+                this.auto(video.duration * 1000);
+            firstPaly = false;
+        });
     }
     // método que exibe o slide
     show(index) {
@@ -42,7 +70,17 @@ export default class Slide {
         this.slides.forEach((slide) => this.hide(slide));
         // depois ativamos somente no elemento cujo index foi passado por parametro
         this.slideActive.classList.add("active");
-        this.auto(this.time);
+        // salvamos no localStorage o slide atual para quando a página atualizar
+        // a reprodução do slide seguir de onde parou
+        localStorage.setItem("activeSlide", String(this.index));
+        // como o vídeo terá um tempo de execução diferente dos das imagens
+        // devemos realizar essa verificação
+        if (this.slideActive instanceof HTMLVideoElement) {
+            this.autoplay(this.slideActive);
+        }
+        else {
+            this.auto(this.time);
+        }
     }
     prev() {
         // se tiver pausado, não executa a função
@@ -67,6 +105,9 @@ export default class Slide {
         // e não apenas clicando para ir para o próximo slide.
         this.pausedTimeout = new Timeout(() => {
             this.paused = true;
+            // se o slide atual for um video, devemos pausar o mesmo
+            if (this.slideActive instanceof HTMLVideoElement)
+                this.slideActive.pause();
         }, 300);
     }
     continue() {
@@ -76,6 +117,9 @@ export default class Slide {
             this.paused = false;
             // devemos chamar novamente o auto para continuar a execução do slide assim que a pessoa soltar o pointer
             this.timeout?.continue();
+            // se o slide atual for um video, devemos continuar o mesmo
+            if (this.slideActive instanceof HTMLVideoElement)
+                this.slideActive.play();
         }
     }
     addControls() {
