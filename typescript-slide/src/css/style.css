@@ -3,6 +3,21 @@ body {
   margin: 20px;
 }
 
+/* classe contendo ajustes de acessibilidade e correções */
+body.paused {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  /* da um zoom quando está segurando o dedo na tela */
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  /* qual a ação de touch está ocorrendo, com o manipulation evita o zoom */
+  touch-action: manipulation;
+}
+
 img,
 video {
   display: block;
@@ -12,6 +27,15 @@ video {
 h1 {
   text-align: center;
   font-size: 1.5rem;
+}
+
+#slide {
+  display: grid;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #000;
 }
 
 #slide-elements {
@@ -30,10 +54,6 @@ h1 {
 #slide-elements > .active {
   opacity: 1;
   visibility: visible;
-}
-
-#slide {
-  display: grid;
 }
 
 #controls {

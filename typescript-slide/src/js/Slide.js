@@ -116,6 +116,8 @@ export default class Slide {
         this.show(nextSlideItem);
     }
     pause() {
+        // adiciona classe com correções de acessibilidade
+        document.body.classList.add("active");
         // timeout só ativar a pausa no slide após 300 ms
         // isso pq assim, teremos a certeza de que a pessoa está pausando realmente
         // e não apenas clicando para ir para o próximo slide.
@@ -129,6 +131,8 @@ export default class Slide {
         }, 300);
     }
     continue() {
+        // remove classe com correções de acessibilidade
+        document.body.classList.remove("active");
         // para continuar, devemos limpar o pausedTimeout
         this.pausedTimeout?.clear();
         if (this.paused) {
@@ -152,7 +156,8 @@ export default class Slide {
         this.controls.appendChild(nextBtn);
         // adicionando o evento de pointerdown para pausar o slide
         this.controls.addEventListener("pointerdown", () => this.pause());
-        this.controls.addEventListener("pointerup", () => this.continue());
+        document.addEventListener("pointerup", () => this.continue());
+        document.addEventListener("touchend", () => this.continue()); // evento para garantir que o slide continue quando a pessoa soltar o touch
         // pointerup -> evento que ativa somente quando a pessoa solta o dedo ou o ponteiro do elemento
         prevBtn.addEventListener("pointerup", () => this.prev());
         nextBtn.addEventListener("pointerup", () => this.next());
