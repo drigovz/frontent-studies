@@ -1,7 +1,7 @@
 import Cryptography from "./Cryptography.js";
 
 export default class CookiesToolset {
-  private cryptography;
+  private cryptography: Cryptography;
 
   constructor() {
     this.cryptography = new Cryptography();
