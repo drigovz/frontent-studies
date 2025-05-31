@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engineStrict": true,
+  "engines": {
+    "node": "^20.18.0",
+    "npm": "^11.2.0",
+    "yarn": "You must run NPM on this project!"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
