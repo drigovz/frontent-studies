@@ -1,9 +1,17 @@
+import Header from './components/Header';
+import Sidenav from './components/Sidenav';
+import Home from './pages/Home';
 import './styles/style.css';
 
 function App() {
   return (
     <>
-      <h1>Fintech</h1>
+      <Sidenav />
+
+      <main>
+        <Header />
+        <Home />
+      </main>
     </>
   );
 }
