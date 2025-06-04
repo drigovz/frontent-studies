@@ -1,7 +1,11 @@
+import useDataContext from '../hooks/useDataContext';
+
 const Header = () => {
+  const { data } = useDataContext();
+
   return (
     <>
-      <header>Header</header>
+      <header>{data && data.map(item => <p key={item.id}>{item.nome}</p>)}</header>
     </>
   );
 };

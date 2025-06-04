@@ -1,17 +1,20 @@
 import Header from './components/Header';
 import Sidenav from './components/Sidenav';
+import { DataContextProvider } from './contexts/DataContext';
 import Home from './pages/Home';
 import './styles/style.css';
 
 function App() {
   return (
     <>
-      <Sidenav />
+      <DataContextProvider>
+        <Sidenav />
 
-      <main>
-        <Header />
-        <Home />
-      </main>
+        <main>
+          <Header />
+          <Home />
+        </main>
+      </DataContextProvider>
     </>
   );
 }
