@@ -11,16 +11,13 @@ html {
 
 body {
   margin: 0px;
-  padding: 0px;
   color: var(--color-two);
   background-color: var(--color-four);
-  font-family: 'sans-serif';
 }
 
 button {
   font-family: sans-serif;
   font-size: 1rem;
-  border: none;
   cursor: pointer;
 }
 
