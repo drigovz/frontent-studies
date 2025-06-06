@@ -7,6 +7,7 @@ const DateRage = () => {
 
   return (
     <form
+      className="box flex"
       onSubmit={event => {
         event.preventDefault();
       }}

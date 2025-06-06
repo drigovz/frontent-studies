@@ -10,7 +10,7 @@ function App() {
       <DataContextProvider>
         <Sidenav />
 
-        <main>
+        <main className="container">
           <Header />
           <Home />
         </main>
