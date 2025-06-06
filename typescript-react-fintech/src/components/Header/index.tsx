@@ -1,11 +1,11 @@
-import useDataContext from '../../hooks/useDataContext';
+import DateRage from '../DateRange';
 
 const Header = () => {
-  const { data } = useDataContext();
-
   return (
     <>
-      <header>{data && data.map(item => <p key={item.id}>{item.nome}</p>)}</header>
+      <header>
+        <DateRage />
+      </header>
     </>
   );
 };
