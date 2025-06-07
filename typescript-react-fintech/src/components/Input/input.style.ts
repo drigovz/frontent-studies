@@ -2,9 +2,9 @@ import type { CSSProperties } from 'react';
 
 const generalStyle: React.CSSProperties = {
   fontSize: '1rem',
-  color: 'var(--color-2)',
+  color: 'var(--color-two)',
   padding: 'var(--gap-s) .75rem',
-  backgroundColor: 'var(--color-4)',
+  backgroundColor: 'var(--color-four)',
   borderRadius: 'var(--gap)',
 };
 
@@ -18,6 +18,7 @@ export const inputStyle: CSSProperties = {
 export const labelStyle: React.CSSProperties = {
   display: 'block',
   marginBottom: 'var(--gap-s)',
-  fontWeight: '600',
+  fontSize: '1rem',
+  fontWeight: '900',
   ...generalStyle,
 };

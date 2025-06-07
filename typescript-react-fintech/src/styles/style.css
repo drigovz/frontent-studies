@@ -7,6 +7,7 @@ html {
   /* bentobox */
   --gap-s: 0.625rem;
   --gap: 1.25rem;
+  font-family: 'Roboto';
 }
 
 body {
@@ -16,7 +17,6 @@ body {
 }
 
 button {
-  font-family: sans-serif;
   font-size: 1rem;
   cursor: pointer;
 }

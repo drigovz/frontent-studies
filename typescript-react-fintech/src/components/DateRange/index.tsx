@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import useDataContext from '../../hooks/useDataContext';
 import Input from '../Input';
 
 const DateRage = () => {
-  const [initial, setInitial] = useState('');
-  const [final, setFinal] = useState('');
+  const { dateInitial, setDateInitial, dateFinal, setDateFinal } = useDataContext();
 
   return (
     <form
@@ -16,16 +15,16 @@ const DateRage = () => {
         id="initial"
         label="Initial"
         type="date"
-        onChange={({ target }) => setInitial(target.value)}
-        value={initial}
+        onChange={({ target }) => setDateInitial(target.value)}
+        value={dateInitial}
       />
 
       <Input
         id="final"
         label="Final"
         type="date"
-        onChange={({ target }) => setFinal(target.value)}
-        value={final}
+        onChange={({ target }) => setDateFinal(target.value)}
+        value={dateFinal}
       />
     </form>
   );
