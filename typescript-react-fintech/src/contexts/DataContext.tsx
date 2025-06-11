@@ -23,8 +23,6 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
     `${import.meta.env.VITE_BASE_URL}/?inicio=${dateInitial}&fim=${dateFinal}`,
   );
 
-  console.log(data);
-
   return (
     <DataContext.Provider
       value={{ data, loading, fetchError, dateInitial, setDateInitial, dateFinal, setDateFinal }}

@@ -78,3 +78,14 @@ ul {
   padding: var(--gap);
   gap: var(--gap);
 }
+
+.btn {
+  padding: var(--gap) var(--gap-s);
+  border: none;
+  border-radius: var(--gap);
+  background-color: var(--color-three);
+  color: var(--color-two);
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-transform: capitalize;
+}
