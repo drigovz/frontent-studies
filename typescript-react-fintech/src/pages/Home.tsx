@@ -3,11 +3,7 @@ import useDataContext from '../hooks/useDataContext';
 const Home = () => {
   const { data } = useDataContext();
 
-  console.log(data);
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
+  if (!data) return null;
 
   return (
     <>
@@ -44,7 +40,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="box"></div>
+        <div className="box mb"></div>
       </section>
     </>
   );

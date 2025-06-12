@@ -99,4 +99,25 @@ ul {
   font-size: 1.25rem;
   margin-bottom: var(--gap);
   color: var(--color-one);
+  margin-bottom: var(--gap-s);
+}
+
+.sale {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: var(--gap);
+  margin-bottom: var(--gap-s);
+  align-items: center;
+}
+
+.sale a {
+  /* com o 'monospace' todos os itens ficam alinhados com a mesma largura */
+  font-family: monospace;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* alinhando o item no final da div */
+.sale div:last-child {
+  justify-self: end;
 }
