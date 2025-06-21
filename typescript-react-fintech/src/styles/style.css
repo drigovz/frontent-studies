@@ -77,6 +77,7 @@ ul {
   display: grid;
   padding: var(--gap);
   gap: var(--gap);
+  grid-template-columns: 240px auto;
 }
 
 .btn {
@@ -120,4 +121,37 @@ ul {
 /* alinhando o item no final da div */
 .sale div:last-child {
   justify-self: end;
+}
+
+.sidenav li {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
+}
+
+.sidenav li span {
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-four);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--gap);
+}
+
+.sidenav li a {
+  flex: 1;
+  font-size: 1.125rem;
+  color: var(--color-one);
+  padding: var(--gap-s) 0;
+}
+
+.sidenav li:hover span {
+  background-color: var(--color-three);
+}
+
+.daterange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
 }
