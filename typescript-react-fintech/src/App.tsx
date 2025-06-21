@@ -1,23 +1,24 @@
+import { BrowserRouter } from 'react-router-dom';
 import Header from './components/Header';
 import Sidenav from './components/Sidenav';
 import { DataContextProvider } from './contexts/DataContext';
-import Home from './pages/Home';
-import Sales from './pages/Sales';
 import './styles/style.css';
+import { ApplicationRoutes } from './routes';
 
 function App() {
   return (
     <>
       <DataContextProvider>
-        <div className="container">
-          <Sidenav />
+        <BrowserRouter>
+          <div className="container">
+            <Sidenav />
 
-          <main>
-            <Header />
-            <Home />
-            <Sales />
-          </main>
-        </div>
+            <main>
+              <Header />
+              <ApplicationRoutes />
+            </main>
+          </div>
+        </BrowserRouter>
       </DataContextProvider>
     </>
   );

@@ -1,4 +1,4 @@
-import Sale from '../components/Sale';
+import Sale from '../components/SaleItem';
 import useDataContext from '../hooks/useDataContext';
 
 const Sales = () => {
