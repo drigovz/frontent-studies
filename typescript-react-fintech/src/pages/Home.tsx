@@ -1,3 +1,4 @@
+import Graphic from '../components/Graphic';
 import useDataContext from '../hooks/useDataContext';
 
 const Home = () => {
@@ -40,7 +41,9 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="box mb"></div>
+        <div className="box mb">
+          <Graphic data={data} />
+        </div>
       </section>
     </>
   );
