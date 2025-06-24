@@ -7,9 +7,9 @@ const Sale = () => {
   const { id } = useParams();
   const { data, loading } = useFetch<SaleItem>(`${import.meta.env.VITE_BASE_URL}/${id}`);
 
-  if (data === null) return null;
-
   if (loading) return <Loading />;
+
+  if (data === null) return null;
 
   return (
     <section>
