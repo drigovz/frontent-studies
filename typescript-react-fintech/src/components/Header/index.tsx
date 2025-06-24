@@ -18,8 +18,8 @@ const Header = () => {
         document.title = 'Fintech | Sales';
         break;
       default:
-        setTitle('Page Not Found');
-        document.title = 'Fintech | Page Not Found';
+        setTitle('Sale');
+        document.title = 'Fintech | Sale';
     }
   }, [localtion]);
 

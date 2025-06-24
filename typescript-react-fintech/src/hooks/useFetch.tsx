@@ -38,7 +38,7 @@ function useFetch<T>(
       // assim que iniciamos o efeito, para garantir novos dados, limpamos o
       // data e setamos o loading como false
       setData(null);
-      setLoading(false);
+      setLoading(true);
 
       try {
         const response = await fetch(url, {
@@ -55,9 +55,15 @@ function useFetch<T>(
         // forçamos uma tipagem da resposta da api
         const json = (await response.json()) as T;
         // nós vamos definir o valor para o data, apenas se a requisição não foi cancelada
-        if (!signal.aborted) setData(json);
+        if (!signal.aborted) {
+          setData(json);
+          setLoading(false);
+        }
       } catch (error) {
-        if (!signal.aborted && error instanceof Error) setFetchError(error.message);
+        if (!signal.aborted && error instanceof Error) {
+          setFetchError(error.message);
+          setLoading(false);
+        }
       } finally {
         if (!signal.aborted) setLoading(false);
       }

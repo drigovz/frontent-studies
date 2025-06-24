@@ -155,3 +155,18 @@ ul {
   grid-template-columns: 1fr 1fr;
   gap: var(--gap);
 }
+
+.loading {
+  border: var(--gap-s) solid var(--color-one);
+  border-right-color: var(--color-five);
+  width: var(--gap);
+  height: var(--gap);
+  border-radius: 50%;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

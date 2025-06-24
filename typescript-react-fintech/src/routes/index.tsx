@@ -8,7 +8,7 @@ export const ApplicationRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/sales" element={<Sales />} />
-      <Route path="/sale/:id" element={<Sale />} />
+      <Route path="/sales/:id" element={<Sale />} />
     </Routes>
   );
 };

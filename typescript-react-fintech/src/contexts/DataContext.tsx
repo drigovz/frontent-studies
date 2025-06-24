@@ -20,7 +20,7 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
   const [dateFinal, setDateFinal] = useState(getNdaysAgo(0));
 
   const { data, loading, fetchError } = useFetch<ISales[]>(
-    `${import.meta.env.VITE_BASE_URL}/?inicio=${dateInitial}&fim=${dateFinal}`,
+    `${import.meta.env.VITE_BASE_URL}?inicio=${dateInitial}&fim=${dateFinal}`,
   );
 
   return (
