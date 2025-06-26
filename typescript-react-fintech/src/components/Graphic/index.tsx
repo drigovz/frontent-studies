@@ -9,40 +9,43 @@ import {
   Line,
 } from 'recharts';
 import type ISales from '../../interfaces/ISales';
+import type { SaleDay } from '../../@types/SaleDay';
 
-const dataGraphic = [
-  {
-    date: '2023-05-03',
-    paid: 3000,
-    pending: 2000,
-    fail: 1000,
-  },
-  {
-    date: '2023-05-04',
-    paid: 6000,
-    pending: 45000,
-    fail: 2000,
-  },
-  {
-    date: '2023-05-05',
-    paid: 2000,
-    pending: 3000,
-    fail: 1500,
-  },
-];
+const transformData = (data: ISales[]): SaleDay[] => {
+  const saleDate = data.reduce((acc: { [key: string]: SaleDay }, sale) => {
+    const dateKey = sale.data.split(' ')[0];
+
+    if (!acc[dateKey]) {
+      acc[dateKey] = {
+        data: dateKey,
+        pago: 0,
+        processando: 0,
+        falha: 0,
+      };
+    }
+
+    acc[dateKey][sale.status] += sale.preco;
+
+    return acc;
+  }, {});
+
+  return Object.values(saleDate);
+};
 
 const Graphic = ({ data }: { data: ISales[] }) => {
+  const transformedData = transformData(data);
+
   return (
     <ResponsiveContainer width="99%" height={400}>
-      <LineChart width={400} height={400} data={dataGraphic}>
+      <LineChart width={400} height={400} data={transformedData}>
         <CartesianGrid strokeDasharray="3 3" />
         <YAxis />
-        <XAxis dataKey="date" />
+        <XAxis dataKey="data" />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="paid" stroke="#8884d8" strokeWidth={3} />
-        <Line type="monotone" dataKey="pending" stroke="#82ca9d" strokeWidth={3} />
-        <Line type="monotone" dataKey="fail" stroke="#ff7300" strokeWidth={3} />
+        <Line type="monotone" dataKey="pago" stroke="#8884d8" strokeWidth={3} />
+        <Line type="monotone" dataKey="processando" stroke="#82ca9d" strokeWidth={3} />
+        <Line type="monotone" dataKey="falha" stroke="#ff7300" strokeWidth={3} />
       </LineChart>
     </ResponsiveContainer>
   );
