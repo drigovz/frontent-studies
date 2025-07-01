@@ -116,3 +116,45 @@ charCodes.set(new Uint8Array(encryptedValue), iv.length);
 ```
 
 E por fim convertemos para uma string **base64 Latin-1 (ISO-8859)** o valor para ser criptografada e salva.
+
+#### Função decrypt
+
+Nessa função primeiramente criamos a Secret Key, se ela ainda não existir. Na sequência convertemos o valor passado no parametro para um array de bytes - **Uint8Array<ArrayBuffer>**. A função **WindowBase64.atob()** decodifica uma string de dados que foi encriptada através da codificação base-64.
+
+```
+const bytes = Uint8Array.from(atob(value), (chars) =>
+  chars.charCodeAt(0)
+);
+```
+
+Extraimos o IV (primeiros 32 bytes).
+
+```
+const iv = bytes.slice(0, this.IV_LENGTH);
+```
+
+Extraimos os valores criptografados para um array de bytes - **Uint8Array<ArrayBuffer>**.
+
+```
+const encryptedValue = bytes.slice(this.IV_LENGTH);
+```
+
+Decriptamos o valor:
+
+```
+const decryptedValue = await window.crypto.subtle.decrypt(
+  {
+    name: "AES-GCM",
+    iv,
+  },
+  this.secretKey,
+  encryptedValue
+);
+```
+
+Por fim convertemos de volta para a string original.
+
+```
+const decoder = new TextDecoder();
+return decoder.decode(decryptedValue);
+```
