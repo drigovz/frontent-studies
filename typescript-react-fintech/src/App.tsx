@@ -11,7 +11,6 @@ function App() {
       <DataContextProvider>
         <BrowserRouter>
           <div className="container">
-            <h1>tests with jest</h1>
             <Sidenav />
 
             <main>
