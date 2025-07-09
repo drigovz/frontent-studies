@@ -1,5 +1,8 @@
 .env
 
+# coverage reports
+coverage/
+
 # Logs
 logs
 *.log

@@ -11,6 +11,7 @@ function App() {
       <DataContextProvider>
         <BrowserRouter>
           <div className="container">
+            <h1 style={{ display: 'none' }}>tests with vitest</h1>
             <Sidenav />
 
             <main>
