@@ -1,7 +1,7 @@
 import useDataContext from '../../hooks/useDataContext';
 import Input from '../Input';
 
-const DateRage = () => {
+const DateRange = () => {
   const { dateInitial, setDateInitial, dateFinal, setDateFinal } = useDataContext();
 
   return (
@@ -30,4 +30,4 @@ const DateRage = () => {
   );
 };
 
-export default DateRage;
+export default DateRange;
