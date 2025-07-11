@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DateRage from '../DateRange';
+import DateRange from '../DateRange';
 import Months from '../Months';
 import { useLocation } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ const Header = () => {
     <>
       <header className="mb">
         <div className="daterange mb">
-          <DateRage />
+          <DateRange />
           <h1 className="box bg-three">{title}</h1>
         </div>
 
